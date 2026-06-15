@@ -1,8 +1,20 @@
+import Header from "../componentes/Header";
+import Sidebar from "../componentes/Sidebar";
+import BugForm from "../componentes/BugForm";
+import BugTable from "../componentes/BugTable";
+
+import "../estilos/dashboard.css";
+
 function Dashboard() {
   return (
-    <div>
-      <h1>QATrack</h1>
-      <p>Sistema de Gestión de Bugs e Incidencias</p>
+    <div className="dashboard">
+      <Sidebar />
+
+      <div className="contenido">
+        <Header />
+        <BugForm />
+        <BugTable />
+      </div>
     </div>
   );
 }

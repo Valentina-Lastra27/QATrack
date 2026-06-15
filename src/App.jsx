@@ -1,11 +1,7 @@
 import Dashboard from "./paginas/Dashboard";
 
 function App() {
-  return (
-    <div>
-      <Dashboard />
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default App;
