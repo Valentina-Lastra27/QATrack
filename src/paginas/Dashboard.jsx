@@ -4,6 +4,7 @@ import Header from "../componentes/Header";
 import Sidebar from "../componentes/Sidebar";
 import BugForm from "../componentes/BugForm";
 import BugTable from "../componentes/BugTable";
+import GitHubIssues from "../componentes/GitHubIssues";
 
 import "../estilos/dashboard.css";
 
@@ -59,6 +60,7 @@ function Dashboard() {
            bugs={bugs}
             eliminarBug={eliminarBug}
           />
+          <GitHubIssues />
       </div>
     </div>
   );
