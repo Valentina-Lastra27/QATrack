@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Verdana, sans-serif;
-  background-color: #F8F4EE;
+   background-color: #F2EEE8;
   color: #252525;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 .header {
-  background-color: #443A35;
+ background-color: #352E2A;
   color: white;
   padding: 20px;
   border-radius: 10px;
@@ -67,7 +67,7 @@ select {
 }
 
 button {
-  background-color: #443A35;
+  background-color: #352E2A;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -77,12 +77,13 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+ 
 }
 
 th {
@@ -95,8 +96,22 @@ td {
   padding: 10px;
   text-align: left;
   word-break: break-word;
+  max-width: 250px;
 }
 
 tr:hover {
-  background-color: #F5F1E8;
+  background-color: #F6F1E8;
+}
+
+td button:first-child {
+  margin-right: 8px;
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #352E2A;
+  color: white;
+  border-radius: 10px;
 }

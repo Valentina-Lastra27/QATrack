@@ -1,28 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function BugForm({ agregarBug }) {
+function BugForm({ agregarBug,  actualizarBug ,bugEditando })  {
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [prioridad, setPrioridad] = useState("Alta");
   const [estado, setEstado] = useState("Pendiente");
+  const [fecha, setFecha] = useState(
+  new Date().toISOString().split("T")[0]
+  );
+  useEffect(() => {
+  if (bugEditando) {
+    setTitulo(bugEditando.titulo);
+    setDescripcion(bugEditando.descripcion || "");
+    setPrioridad(bugEditando.prioridad);
+    setEstado(bugEditando.estado);
+    setFecha(bugEditando.fecha);
+  
+  }
+ }, [bugEditando]);
 
   const guardarIncidencia = () => {
-    if (!titulo.trim()) return;
+  if (!titulo.trim()) return;
 
-      agregarBug({
-       titulo,
-       descripcion,
-       prioridad,
-       estado,
-       fecha: new Date().toLocaleDateString("es-AR"),
-      });
+  if (bugEditando) {
+    actualizarBug({
+      ...bugEditando,
+      titulo,
+      descripcion,
+      prioridad,
+      estado,
+      fecha,
+    });
+  } else {
+    agregarBug({
+      titulo,
+      descripcion,
+      prioridad,
+      estado,
+      fecha,
+    });
+  }
 
-    setTitulo("");
-    setDescripcion("");
-    setPrioridad("Alta");
-    setEstado("Pendiente");
-  };
-
+  setTitulo("");
+  setDescripcion("");
+  setPrioridad("Alta");
+  setEstado("Pendiente");
+  setFecha(
+  new Date().toISOString().split("T")[0]
+);
+};
   return (
     <div className="formulario">
       <h2>Nueva Incidencia</h2>
@@ -61,6 +87,14 @@ function BugForm({ agregarBug }) {
         <option>En proceso</option>
         <option>Resuelto</option>
       </select>
+
+      <label>Fecha</label>
+
+      <input
+         type="date"
+         value={fecha}
+         onChange={(e) => setFecha(e.target.value)}
+      />
 
       <button onClick={guardarIncidencia}>
         Guardar incidencia

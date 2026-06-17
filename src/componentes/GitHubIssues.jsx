@@ -33,7 +33,13 @@ function GitHubIssues() {
           {issues.map((issue) => (
             <tr key={issue.id}>
               <td>{issue.title}</td>
-              <td>{issue.state}</td>
+
+              <td>
+                {issue.state === "open"
+                  ? "Abierta"
+                  : "Cerrada"}
+              </td>
+
               <td>{issue.user.login}</td>
             </tr>
           ))}
